@@ -1,12 +1,20 @@
-import React from 'react';
+// pages/about.tsx
 
-const HomePage: React.FC = () => {
+import React from 'react';
+import Button from '@/components/common/Button';
+
+const AboutPage: React.FC = () => {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold text-blue-700 mb-4">Welcome to My Website!</h1>
-      <p className="text-lg text-gray-700">This is the home page built with Next.js and TypeScript.</p>
+    <main className="min-h-screen p-8 bg-gray-50">
+      <h1 className="text-3xl font-bold mb-6">About Page</h1>
+
+      <div className="space-y-4">
+        <Button size="small" shape="rounded-sm">Small Button</Button>
+        <Button size="medium" shape="rounded-md">Medium Button</Button>
+        <Button size="large" shape="rounded-full">Large Button</Button>
+      </div>
     </main>
   );
 };
 
-export default HomePage;
+export default AboutPage;
