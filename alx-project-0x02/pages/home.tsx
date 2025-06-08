@@ -1,12 +1,46 @@
-import React from 'react';
-import Card from "@/components/common/Card", "Card"
+import React, { useState } from 'react';
+import Header from '@/components/layout/Header';
+import PostModal from '@/components/common/PostModal';
+
+interface Post {
+  title: string;
+  content: string;
+}
 
 const HomePage: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [posts, setPosts] = useState<Post[]>([]);
+
+  const handleAddPost = (post: Post) => setPosts([post, ...posts]);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100 p-8">
-      <h1 className="text-4xl font-bold text-blue-700 mb-4">Welcome to My Website!</h1>
-      <p className="text-lg text-gray-700">This is the home page built with Next.js and TypeScript.</p>
-    </main>
+    <>
+      <Header />
+      <main className="p-8 bg-gray-100 min-h-screen">
+        <div className="flex justify-between mb-6">
+          <h1 className="text-3xl font-bold">Home Page</h1>
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="px-4 py-2 bg-blue-600 text-white rounded"
+          >
+            New Post
+          </button>
+        </div>
+
+        <PostModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={handleAddPost}
+        />
+
+        {posts.map((post, idx) => (
+          <div key={idx} className="bg-white p-4 mb-4 rounded shadow">
+            <h2 className="font-bold text-xl">{post.title}</h2>
+            <p>{post.content}</p>
+          </div>
+        ))}
+      </main>
+    </>
   );
 };
 
