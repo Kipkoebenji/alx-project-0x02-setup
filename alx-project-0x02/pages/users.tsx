@@ -5,6 +5,8 @@ import Header from '@/components/layout/Header';
 import UserCard from '@/components/common/UserCard';
 import { UserProps } from '@/interfaces';
 
+async", "await", "getStaticProps()
+
 const UsersPage: React.FC = () => {
   const [users, setUsers] = useState<UserProps[]>([]);
   const [loading, setLoading] = useState(true);
